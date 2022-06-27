@@ -72,18 +72,28 @@ class _ControlFilter extends State<ControlFilter> {
   @override
   Widget build(BuildContext context) {
     final filtersData = filters.getAll(context);
+    final resultat = [];
+    filtersData.then((resultat) {
+      inspect(resultat);
 
+      return  Row(
+      children: [
+        
+          Text(resultat[1].id.toString()),
+          // Text(
+        ],
+      );
+    });
     // print(filtersData);
-    inspect(filtersData.asStream());
+
     print("LAAAAAAAAAAAAA"); // TODO: implement build
-    Future<void> displayData() async {
-      print(await filtersData);
-    }
+
 
     return Row(
       children: [
-        Text(filtersData[1].id), 
-        Text(filtersData[1].id)
+       
+        // Text(filtersData[1].id),
+        // Text(
       ],
     );
     // throw UnimplementedError();
