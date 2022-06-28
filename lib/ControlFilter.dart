@@ -21,7 +21,6 @@ class ControlFilter extends StatefulWidget {
 class _ControlFilter extends State<ControlFilter> {
   BluetoothConnection connection;
   // final filters = new FilterRepository();
-  FilterRepository filters = new FilterRepository();
 
   // Fetch content from the json file
 
@@ -35,6 +34,7 @@ class _ControlFilter extends State<ControlFilter> {
   //   return filters = data["items"];
   // }
 
+  List<Card> filterWidget = [];
   bool isConnecting = true;
   bool get isConnected => connection != null && connection.isConnected;
 
@@ -69,33 +69,41 @@ class _ControlFilter extends State<ControlFilter> {
     });
   }
 
+  getFilters() async {
+    List<Filter> filters = await FilterRepository().getAll(context);
+    filterWidget = filters.map((filter) => Card(
+          child: ListTile(title: Text(filter.name)),
+        ));
+  }
+
   @override
   Widget build(BuildContext context) {
-    final filtersData = filters.getAll(context);
-    final resultat = [];
-    filtersData.then((resultat) {
-      inspect(resultat);
+    // Future<List<Filter>> filtersInstance = FilterRepository().getAll(context);
+    var filters;
+    // getFilters();
+    // filtersInstance.then((data) async {
+    //   await filters.add(data);
+    // });
 
-      return  Row(
-      children: [
-        
-          Text(resultat[1].id.toString()),
-          // Text(
-        ],
-      );
-    });
-    // print(filtersData);
-
-    print("LAAAAAAAAAAAAA"); // TODO: implement build
-
-
-    return Row(
-      children: [
-       
-        // Text(filtersData[1].id),
-        // Text(
-      ],
-    );
-    // throw UnimplementedError();
+    // inspect(getFilters());
+    // Future<void> filters = filtersInstance.then((data) => value);
+    // inspect(filters);
+    // filtersData.then((elFilter) {
+    //   add(elFilter);
+    // });
+    return Scaffold(
+        appBar: AppBar(
+          title: const Text("Mes Filtres"),
+        ),
+        body: Center(
+          child: buildFilter(),
+        ));
   }
+
+  Widget buildFilter() =>
+      ListView.builder(itemBuilder: (context, index) {
+       return Row(
+          children: filterWidget,
+        );
+      });
 }

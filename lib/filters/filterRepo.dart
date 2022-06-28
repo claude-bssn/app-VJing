@@ -5,12 +5,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_VJing/filters/filter.dart';
 
 class FilterRepository {
-  
-
-  String printTest() {
-      print("AVANT GETALL");
-  }
-
   Future<List<Filter>> getAll(BuildContext context) async {
     print("AVANT FILTER");
 

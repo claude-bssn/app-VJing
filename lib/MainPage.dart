@@ -142,7 +142,7 @@ class _MainPage extends State<MainPage> {
 
                   if (selectedDevice != null) {
                     print('Connect -> selected ' + selectedDevice.address);
-                    _startChat(context, selectedDevice);
+                    _controleFilters(context, selectedDevice);
                   } else {
                     print('Connect -> no device selected');
                   }
@@ -155,7 +155,7 @@ class _MainPage extends State<MainPage> {
     );
   }
 
-  void _startChat(BuildContext context, BluetoothDevice server) {
+  void _controleFilters(BuildContext context, BluetoothDevice server) {
     Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) {

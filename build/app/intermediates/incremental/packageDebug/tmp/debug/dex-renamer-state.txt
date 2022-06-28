@@ -1,4 +1,4 @@
-#Mon Jun 27 17:10:24 CEST 2022
+#Tue Jun 28 16:54:54 CEST 2022
 base.0=/Users/klod/Documents/vjing/VJing/build/app/intermediates/dex/debug/mergeDexDebug/classes.dex
 renamed.0=classes.dex
 path.0=classes.dex
